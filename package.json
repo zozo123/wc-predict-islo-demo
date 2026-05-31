@@ -4,7 +4,8 @@
   "private": true,
   "description": "Polymarket-style World Cup prediction market — 3 microservices + gateway. Built with Claude Code, run on islo.",
   "scripts": {
-    "start": "node start.js"
+    "start": "node start.js",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=18"

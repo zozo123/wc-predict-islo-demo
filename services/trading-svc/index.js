@@ -12,6 +12,7 @@ let seq = 1;
 const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') return send(res, 204, '');
   const url = new URL(req.url, `http://localhost:${PORT}`);
+  if (req.method === 'GET' && url.pathname === '/health') return send(res, 200, { ok: true, svc: 'trading-svc' });
 
   if (req.method === 'GET' && url.pathname === '/positions')
     return send(res, 200, positions);
@@ -28,7 +29,7 @@ const server = http.createServer(async (req, res) => {
     const pos = { id: seq++, marketId, side, shares: n, priceAt, ts: Date.now() };
     positions.push(pos);
     console.log(`\x1b[33m[trading-svc]\x1b[0m fill #${pos.id} ${side} ${n} ${marketId} @ ${priceAt}¢`);
-    return send(res, 200, { order: pos, market });
+    return send(res, 200, { order: pos, market, trace: ['gateway', 'trading-svc', 'markets-svc'] });
   }
 
   // Settlement calls this to pay out positions on a resolved market.

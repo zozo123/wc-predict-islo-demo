@@ -40,6 +40,17 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
   const p = url.pathname;
 
+  // Aggregate health across all three microservices (drives the UI's live chips).
+  if (p === '/api/health') {
+    return Promise.allSettled([
+      call('GET', `${MARKETS}/health`), call('GET', `${TRADING}/health`), call('GET', `${SETTLEMENT}/health`),
+    ]).then(([m, t, s]) => send(res, 200, {
+      markets: m.status === 'fulfilled' && m.value.ok,
+      trading: t.status === 'fulfilled' && t.value.ok,
+      settlement: s.status === 'fulfilled' && s.value.ok,
+    }));
+  }
+
   // API surface — routed to the right microservice.
   if (p === '/api/markets') return proxy(req, res, `${MARKETS}/markets`);
   if (p === '/api/orders') return proxy(req, res, `${TRADING}/orders`);

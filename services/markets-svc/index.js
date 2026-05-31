@@ -41,6 +41,7 @@ function view(mk) {
 const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') return send(res, 204, '');
   const url = new URL(req.url, `http://localhost:${PORT}`);
+  if (req.method === 'GET' && url.pathname === '/health') return send(res, 200, { ok: true, svc: 'markets-svc' });
   const parts = url.pathname.split('/').filter(Boolean); // e.g. ['markets', 'bra-srb', 'trade']
 
   if (req.method === 'GET' && url.pathname === '/markets')

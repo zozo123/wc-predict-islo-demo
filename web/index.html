@@ -4,20 +4,51 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>World Cup 2026 — Prediction Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">⚽ <span>World Cup 2026</span> · Prediction Market</div>
-    <div class="bal">Balance <b id="bal">$50.00</b></div>
+  <header class="top">
+    <div class="brand">
+      <span class="ball">⚽</span>
+      <div>
+        <div class="wordmark">WORLD CUP 2026</div>
+        <div class="sub">Prediction Market</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="bal"><span>Balance</span><b id="bal">$50.00</b></div>
+      <div class="sandbox">running in <b>islo</b> sandbox</div>
+    </div>
   </header>
 
+  <!-- System bar: the 3 microservices, live -->
+  <div class="syslane" id="syslane">
+    <span class="syslabel">architecture</span>
+    <div class="svc" data-svc="markets"><i></i> markets-svc <em>:4001</em></div>
+    <span class="hop">→</span>
+    <div class="svc" data-svc="trading"><i></i> trading-svc <em>:4002</em></div>
+    <span class="hop">→</span>
+    <div class="svc" data-svc="settlement"><i></i> settlement-svc <em>:4003</em></div>
+    <span class="spacer"></span>
+    <div class="gw"><i></i> gateway <em>:3000</em></div>
+  </div>
+
   <main>
-    <p class="tag">Will the home side win? Buy <span class="yes">YES</span> or <span class="no">NO</span> — prices move with the crowd.</p>
-    <div id="board" class="board"></div>
+    <section class="markets">
+      <h2>Match winner markets</h2>
+      <div id="board" class="board"></div>
+    </section>
+
+    <aside class="activity">
+      <h3>Live service activity</h3>
+      <ul id="feed" class="feed"></ul>
+    </aside>
   </main>
 
-  <footer class="foot">3 microservices · markets · trading · settlement — running in a secure <b>islo</b> sandbox</footer>
+  <footer class="foot">
+    <b>markets</b> · <b>trading</b> · <b>settlement</b> — 3 microservices in a secure islo sandbox · built with Claude Code
+  </footer>
 
   <div id="toast" class="toast"></div>
   <script src="/app.js"></script>

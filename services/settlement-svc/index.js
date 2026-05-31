@@ -12,6 +12,7 @@ const results = []; // { marketId, outcome, payout, ts }
 const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') return send(res, 204, '');
   const url = new URL(req.url, `http://localhost:${PORT}`);
+  if (req.method === 'GET' && url.pathname === '/health') return send(res, 200, { ok: true, svc: 'settlement-svc' });
 
   if (req.method === 'GET' && url.pathname === '/results')
     return send(res, 200, results);

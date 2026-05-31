@@ -10,7 +10,7 @@ const services = [
   ['gateway', 'gateway/index.js'],
 ];
 
-console.log('\x1b[1m⚽  World Cup Prediction Market — booting 3 microservices + gateway\x1b[0m\n');
+console.log('\x1b[1mWorld Cup Prediction Market — booting 3 microservices + gateway\x1b[0m\n');
 
 const children = services.map(([name, file]) => {
   const child = spawn('node', [path.join(__dirname, file)], { stdio: 'inherit', env: process.env });

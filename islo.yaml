@@ -1,0 +1,15 @@
+# islo sandbox definition — "yield and go".
+# `islo use wc-predict -- node start.js` clones this repo into a hardware-isolated
+# sandbox, then boots the 3 microservices + gateway. Expose with `islo share wc-predict 3000`.
+sandbox: wc-predict
+image: docker.io/library/node:22-bookworm-slim
+cpu: 2
+memory_mb: 2048
+sources:
+  - url: https://github.com/zozo123/wc-predict-islo-demo
+workdir: wc-predict-islo-demo
+setup_scripts:
+  - name: Verify Node toolchain
+    script: node --version && echo "no npm install needed — zero dependencies"
+env:
+  PORT: "3000"

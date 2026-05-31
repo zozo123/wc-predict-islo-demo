@@ -1,0 +1,12 @@
+{
+  "name": "wc-predict",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Polymarket-style World Cup prediction market — 3 microservices + gateway. Built with Claude Code, run on islo.",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

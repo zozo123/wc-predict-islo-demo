@@ -6,6 +6,8 @@ const { send, readJson, banner } = require('../../lib/http');
 const PORT = process.env.MARKETS_PORT || 4001;
 const B = 200; // LMSR liquidity parameter — higher = less price impact per share.
 
+// Sample fixtures for the demo: these pairings and groups are from the 2022
+// World Cup group stage, not a real or upcoming schedule.
 // Each market is a binary "will the home team win?" outcome. q tracks net shares.
 // Initial q values are tuned so the board opens at realistic, varied odds and a
 // ~25-share bet visibly nudges the price ~3¢ (great for the on-camera tick).

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>World Cup 2026 — Prediction Market</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Cup prediction market (demo)</title>
+  <meta name="description" content="Play-money World Cup prediction market demo: three Node.js microservices and a gateway with LMSR pricing. No real money; all state is in memory.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="top">
     <div class="brand">
       <span class="ball">⚽</span>
       <div>
-        <div class="wordmark">WORLD CUP 2026</div>
+        <div class="wordmark">WORLD CUP · DEMO</div>
         <div class="sub">Prediction Market</div>
       </div>
     </div>
     <div class="right">
-      <div class="bal"><span>Balance</span><b id="bal">$50.00</b></div>
+      <div class="bal"><span>Demo</span><b>Play money</b></div>
       <div class="sandbox">running in <b>islo</b> sandbox</div>
     </div>
   </header>
@@ -37,6 +38,7 @@
   <main>
     <section class="markets">
       <h2>Match winner markets</h2>
+      <p class="note">Sample fixtures for the demo · play money, no real funds · state resets on restart</p>
       <div id="board" class="board"></div>
     </section>
 
@@ -47,7 +49,7 @@
   </main>
 
   <footer class="foot">
-    <b>markets</b> · <b>trading</b> · <b>settlement</b> — 3 microservices in a secure islo sandbox · built with Claude Code
+    <b>markets</b> · <b>trading</b> · <b>settlement</b> — 3 microservices in an islo.dev sandbox · built with Claude Code by <a href="https://zozo123.github.io/">Yossi Eliaz</a>
   </footer>
 
   <div id="toast" class="toast"></div>
